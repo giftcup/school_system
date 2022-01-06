@@ -5,6 +5,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import javax.swing.JOptionPane;
 
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
@@ -281,21 +282,23 @@ public class courses extends javax.swing.JFrame {
     private void submitButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_submitButtonActionPerformed
         // TODO add your handling code here:
         try {
-            origin menu = new origin();
-            menu.setVisible(true);
-            setVisible(false);
-        }
-        catch(Exception e) {
-
-        }
+               students menu = new students();
+               menu.setVisible(true);
+               setVisible(false);
+           }
+           catch(Exception e) {
+               
+           }
     }//GEN-LAST:event_submitButtonActionPerformed
-
-    private void EducationActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EducationActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_EducationActionPerformed
+    
     Connection Con = null;
     Statement St = null;
     ResultSet Rs = null;
+    
+    private void EducationActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EducationActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_EducationActionPerformed
+
     
     
     private void submitButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_submitButtonMouseClicked
@@ -305,6 +308,9 @@ public class courses extends javax.swing.JFrame {
             PreparedStatement add = Con.prepareStatement("INSERT INTO STUDENT values(?,?,?,?,?,?,?,?,?,?,?,?,?)");
             add.setString(12, Programme.getSelectedItem().toString());
             add.setString(13, Education.getSelectedItem().toString());
+//            int row = add.executeUpdate();
+            JOptionPane.showMessageDialog(this, "Student Registered!");
+            Con.close();
         } catch(SQLException e) {
        }
     }//GEN-LAST:event_submitButtonMouseClicked

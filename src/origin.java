@@ -1,3 +1,12 @@
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import javax.swing.JOptionPane;
+
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
@@ -35,16 +44,16 @@ public class origin extends javax.swing.JFrame {
         jPanel3 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         label2 = new java.awt.Label();
-        Division_of_Origin = new javax.swing.JTextField();
+        Division = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
         Address = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
-        GaurdianName = new javax.swing.JTextField();
+        gaurdian = new javax.swing.JTextField();
         Tel = new javax.swing.JTextField();
         jLabel8 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
         jLabel10 = new javax.swing.JLabel();
-        Marital_status = new javax.swing.JComboBox<>();
+        married = new javax.swing.JComboBox<>();
 
         jLabel9.setText("jLabel9");
 
@@ -119,10 +128,10 @@ public class origin extends javax.swing.JFrame {
         label2.setForeground(new java.awt.Color(0, 0, 0));
         label2.setText("Division Of Origin");
 
-        Division_of_Origin.setBackground(new java.awt.Color(255, 255, 255));
-        Division_of_Origin.addActionListener(new java.awt.event.ActionListener() {
+        Division.setBackground(new java.awt.Color(255, 255, 255));
+        Division.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                Division_of_OriginActionPerformed(evt);
+                DivisionActionPerformed(evt);
             }
         });
 
@@ -137,10 +146,10 @@ public class origin extends javax.swing.JFrame {
         jLabel7.setForeground(new java.awt.Color(0, 0, 0));
         jLabel7.setText("Gaurdian's Name");
 
-        GaurdianName.setBackground(new java.awt.Color(255, 255, 255));
-        GaurdianName.addActionListener(new java.awt.event.ActionListener() {
+        gaurdian.setBackground(new java.awt.Color(255, 255, 255));
+        gaurdian.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                GaurdianNameActionPerformed(evt);
+                gaurdianActionPerformed(evt);
             }
         });
 
@@ -155,6 +164,11 @@ public class origin extends javax.swing.JFrame {
         jButton1.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         jButton1.setForeground(new java.awt.Color(255, 255, 255));
         jButton1.setText("NEXT");
+        jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton1MouseClicked(evt);
+            }
+        });
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
@@ -165,13 +179,13 @@ public class origin extends javax.swing.JFrame {
         jLabel10.setForeground(new java.awt.Color(0, 0, 0));
         jLabel10.setText("Marital Status");
 
-        Marital_status.setBackground(new java.awt.Color(255, 255, 255));
-        Marital_status.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
-        Marital_status.setForeground(new java.awt.Color(0, 0, 0));
-        Marital_status.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Single", "Married" }));
-        Marital_status.addActionListener(new java.awt.event.ActionListener() {
+        married.setBackground(new java.awt.Color(255, 255, 255));
+        married.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        married.setForeground(new java.awt.Color(0, 0, 0));
+        married.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Single", "Married" }));
+        married.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                Marital_statusActionPerformed(evt);
+                marriedActionPerformed(evt);
             }
         });
 
@@ -199,17 +213,17 @@ public class origin extends javax.swing.JFrame {
                             .addGroup(jPanel3Layout.createSequentialGroup()
                                 .addGap(21, 21, 21)
                                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(GaurdianName, javax.swing.GroupLayout.DEFAULT_SIZE, 209, Short.MAX_VALUE)
-                                    .addComponent(Division_of_Origin)
+                                    .addComponent(gaurdian, javax.swing.GroupLayout.DEFAULT_SIZE, 209, Short.MAX_VALUE)
+                                    .addComponent(Division)
                                     .addComponent(Address)
-                                    .addComponent(Marital_status, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                                    .addComponent(married, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                             .addGroup(jPanel3Layout.createSequentialGroup()
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(Tel, javax.swing.GroupLayout.PREFERRED_SIZE, 209, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                 .addContainerGap(38, Short.MAX_VALUE))
         );
 
-        jPanel3Layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {Address, Division_of_Origin, GaurdianName, Marital_status, Tel});
+        jPanel3Layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {Address, Division, Tel, gaurdian, married});
 
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -219,7 +233,7 @@ public class origin extends javax.swing.JFrame {
                 .addGap(25, 25, 25)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(label2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(Division_of_Origin, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(Division, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(33, 33, 33)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel8)
@@ -231,17 +245,17 @@ public class origin extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 23, Short.MAX_VALUE)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel7)
-                    .addComponent(GaurdianName, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(gaurdian, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(21, 21, 21)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel10)
-                    .addComponent(Marital_status, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(married, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(21, 21, 21)
                 .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(48, 48, 48))
         );
 
-        jPanel3Layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {Address, Division_of_Origin, GaurdianName, Marital_status, Tel});
+        jPanel3Layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {Address, Division, Tel, gaurdian, married});
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -273,9 +287,9 @@ public class origin extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void Division_of_OriginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Division_of_OriginActionPerformed
+    private void DivisionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DivisionActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_Division_of_OriginActionPerformed
+    }//GEN-LAST:event_DivisionActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
@@ -289,13 +303,35 @@ public class origin extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jButton1ActionPerformed
 
-    private void Marital_statusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Marital_statusActionPerformed
+    private void marriedActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_marriedActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_Marital_statusActionPerformed
+    }//GEN-LAST:event_marriedActionPerformed
 
-    private void GaurdianNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_GaurdianNameActionPerformed
+    private void gaurdianActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_gaurdianActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_GaurdianNameActionPerformed
+    }//GEN-LAST:event_gaurdianActionPerformed
+    
+    Connection Con = null;
+    Statement St = null;
+    ResultSet Rs = null;
+    
+    private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
+            // TODO add your handling code here:
+            try {
+            Con = DriverManager.getConnection("jdbc://localhost:1527/school_db, root, root");
+            PreparedStatement add = Con.prepareStatement("INSERT INTO STUDENT values(?,?,?,?,?,?,?,?,?,?,?,?,?)");
+            add.setString(11, Division.getText());
+            add.setString(9, Address.getText());
+            add.setString(6, Tel.getText());
+            add.setString(8, gaurdian.getText());
+            add.setString(9, married.getSelectedItem().toString());
+            
+            JOptionPane.showMessageDialog(this, "Student Registered!");
+            Con.close();
+            
+        } catch (SQLException e){
+        }
+    }//GEN-LAST:event_jButton1MouseClicked
 
     /**
      * @param args the command line arguments
@@ -334,10 +370,9 @@ public class origin extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField Address;
-    private javax.swing.JTextField Division_of_Origin;
-    private javax.swing.JTextField GaurdianName;
-    private javax.swing.JComboBox<String> Marital_status;
+    private javax.swing.JTextField Division;
     private javax.swing.JTextField Tel;
+    private javax.swing.JTextField gaurdian;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
@@ -353,5 +388,6 @@ public class origin extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private java.awt.Label label2;
+    private javax.swing.JComboBox<String> married;
     // End of variables declaration//GEN-END:variables
 }

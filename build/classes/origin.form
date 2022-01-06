@@ -215,10 +215,10 @@
                                   <Group type="102" attributes="0">
                                       <EmptySpace min="-2" pref="21" max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                          <Component id="GaurdianName" linkSize="2" pref="209" max="32767" attributes="0"/>
-                                          <Component id="Division_of_Origin" linkSize="2" max="32767" attributes="0"/>
+                                          <Component id="gaurdian" linkSize="2" pref="209" max="32767" attributes="0"/>
+                                          <Component id="Division" linkSize="2" max="32767" attributes="0"/>
                                           <Component id="Address" linkSize="2" alignment="0" max="32767" attributes="0"/>
-                                          <Component id="Marital_status" linkSize="2" alignment="0" max="32767" attributes="0"/>
+                                          <Component id="married" linkSize="2" alignment="0" max="32767" attributes="0"/>
                                       </Group>
                                   </Group>
                                   <Group type="102" alignment="0" attributes="0">
@@ -240,7 +240,7 @@
                       <EmptySpace min="-2" pref="25" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="label2" min="-2" max="-2" attributes="0"/>
-                          <Component id="Division_of_Origin" linkSize="1" min="-2" pref="45" max="-2" attributes="0"/>
+                          <Component id="Division" linkSize="1" min="-2" pref="45" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace min="-2" pref="33" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
@@ -255,12 +255,12 @@
                       <EmptySpace pref="23" max="32767" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="jLabel7" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="GaurdianName" linkSize="1" alignment="3" min="-2" pref="45" max="-2" attributes="0"/>
+                          <Component id="gaurdian" linkSize="1" alignment="3" min="-2" pref="45" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace min="-2" pref="21" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="jLabel10" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="Marital_status" linkSize="1" alignment="3" min="-2" pref="42" max="-2" attributes="0"/>
+                          <Component id="married" linkSize="1" alignment="3" min="-2" pref="42" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace min="-2" pref="21" max="-2" attributes="0"/>
                       <Component id="jButton1" min="-2" pref="44" max="-2" attributes="0"/>
@@ -292,14 +292,14 @@
                 <Property name="text" type="java.lang.String" value="Division Of Origin"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JTextField" name="Division_of_Origin">
+            <Component class="javax.swing.JTextField" name="Division">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="ff" green="ff" red="ff" type="rgb"/>
                 </Property>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="Division_of_OriginActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="DivisionActionPerformed"/>
               </Events>
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel2">
@@ -334,14 +334,14 @@
                 <Property name="text" type="java.lang.String" value="Gaurdian&apos;s Name"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JTextField" name="GaurdianName">
+            <Component class="javax.swing.JTextField" name="gaurdian">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="ff" green="ff" red="ff" type="rgb"/>
                 </Property>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="GaurdianNameActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="gaurdianActionPerformed"/>
               </Events>
             </Component>
             <Component class="javax.swing.JTextField" name="Tel">
@@ -379,6 +379,7 @@
                 <Property name="text" type="java.lang.String" value="NEXT"/>
               </Properties>
               <Events>
+                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jButton1MouseClicked"/>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton1ActionPerformed"/>
               </Events>
             </Component>
@@ -393,7 +394,7 @@
                 <Property name="text" type="java.lang.String" value="Marital Status"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JComboBox" name="Marital_status">
+            <Component class="javax.swing.JComboBox" name="married">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="ff" green="ff" red="ff" type="rgb"/>
@@ -412,7 +413,7 @@
                 </Property>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="Marital_statusActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="marriedActionPerformed"/>
               </Events>
               <AuxValues>
                 <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>

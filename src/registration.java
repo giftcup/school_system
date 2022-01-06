@@ -13,6 +13,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import javax.swing.JOptionPane;
 
 public class registration extends javax.swing.JFrame {
 
@@ -148,7 +149,7 @@ public class registration extends javax.swing.JFrame {
         jLabel9.setText("Date of Birth");
 
         Date_of_Birth.setBackground(new java.awt.Color(255, 255, 255));
-        Date_of_Birth.setText("dd/mm/yy");
+        Date_of_Birth.setToolTipText("dd/mm/yy");
 
         button1.setBackground(new java.awt.Color(0, 0, 0));
         button1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -170,7 +171,6 @@ public class registration extends javax.swing.JFrame {
         jLabel10.setText("Nationality");
 
         nationality.setBackground(new java.awt.Color(255, 255, 255));
-        nationality.setText("dd/mm/yy");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -274,18 +274,23 @@ public class registration extends javax.swing.JFrame {
     ResultSet Rs = null;
     
     java.util.Date BirthDate;
-    java.sql.Date dOB;
+    java.sql.Date DOB;
     
     private void button1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_button1MouseClicked
         // TODO add your handling code here:
-        BirthDate = Date_of_Birth.getDate();
-        dOB = new java.sql.Date(BirthDate.getTime());
+//        BirthDate = Date_of_Birth.getDate();
+//        DOB = new java.sql.Date(Date_of_Birth.getTime());
+
         try {
             Con = DriverManager.getConnection("jdbc://localhost:1527/school_db, root, root");
             PreparedStatement add = Con.prepareStatement("INSERT INTO STUDENT values(?,?,?,?,?,?,?,?,?,?,?,?,?)");
             add.setString(2, Firstname.getText());
             add.setString(3, Surname.getText());
             add.setString(5, Sex.getSelectedItem().toString());
+//            add.setDate(4, DOB);
+            add.setString(10, nationality.getText());
+            JOptionPane.showMessageDialog(this, "Student Registered!");
+            Con.close();
             
         } catch (SQLException e){
         }
