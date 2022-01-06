@@ -48,7 +48,7 @@ public class registration extends javax.swing.JFrame {
         Sex = new javax.swing.JComboBox<>();
         jLabel9 = new javax.swing.JLabel();
         Date_of_Birth = new javax.swing.JTextField();
-        button1 = new java.awt.Button();
+        pnext = new java.awt.Button();
         jLabel10 = new javax.swing.JLabel();
         nationality = new javax.swing.JTextField();
 
@@ -151,18 +151,18 @@ public class registration extends javax.swing.JFrame {
         Date_of_Birth.setBackground(new java.awt.Color(255, 255, 255));
         Date_of_Birth.setToolTipText("dd/mm/yy");
 
-        button1.setBackground(new java.awt.Color(0, 0, 0));
-        button1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        button1.setFont(new java.awt.Font("Lucida Grande", 1, 18)); // NOI18N
-        button1.setLabel("NEXT");
-        button1.addMouseListener(new java.awt.event.MouseAdapter() {
+        pnext.setBackground(new java.awt.Color(0, 0, 0));
+        pnext.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        pnext.setFont(new java.awt.Font("Lucida Grande", 1, 18)); // NOI18N
+        pnext.setLabel("NEXT");
+        pnext.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                button1MouseClicked(evt);
+                pnextMouseClicked(evt);
             }
         });
-        button1.addActionListener(new java.awt.event.ActionListener() {
+        pnext.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                button1ActionPerformed(evt);
+                pnextActionPerformed(evt);
             }
         });
 
@@ -201,7 +201,7 @@ public class registration extends javax.swing.JFrame {
                         .addContainerGap(222, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(button1, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(pnext, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(39, 39, 39))))
         );
         jPanel1Layout.setVerticalGroup(
@@ -231,7 +231,7 @@ public class registration extends javax.swing.JFrame {
                     .addComponent(jLabel10)
                     .addComponent(nationality, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(39, 39, 39)
-                .addComponent(button1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(pnext, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -257,7 +257,7 @@ public class registration extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_SexActionPerformed
 
-    private void button1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button1ActionPerformed
+    private void pnextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pnextActionPerformed
            // TODO add your handling code here:
            try {
                origin menu = new origin();
@@ -267,7 +267,7 @@ public class registration extends javax.swing.JFrame {
            catch(Exception e) {
                
            }
-    }//GEN-LAST:event_button1ActionPerformed
+    }//GEN-LAST:event_pnextActionPerformed
 
     Connection Con = null;
     Statement St = null;
@@ -276,14 +276,14 @@ public class registration extends javax.swing.JFrame {
     java.util.Date BirthDate;
     java.sql.Date DOB;
     
-    private void button1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_button1MouseClicked
+    private void pnextMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnextMouseClicked
         // TODO add your handling code here:
 //        BirthDate = Date_of_Birth.getDate();
 //        DOB = new java.sql.Date(Date_of_Birth.getTime());
 
         try {
-            Con = DriverManager.getConnection("jdbc://localhost:1527/school_db, root, root");
-            PreparedStatement add = Con.prepareStatement("INSERT INTO STUDENT values(?,?,?,?,?,?,?,?,?,?,?,?,?)");
+            Con = DriverManager.getConnection("jdbc://localhost:1527/school_db, APP, APP");
+            PreparedStatement add = Con.prepareStatement("Insert into STUDENT values(?,?,?,?,?,?,?,?,?,?,?,?,?)");
             add.setString(2, Firstname.getText());
             add.setString(3, Surname.getText());
             add.setString(5, Sex.getSelectedItem().toString());
@@ -293,8 +293,9 @@ public class registration extends javax.swing.JFrame {
             Con.close();
             
         } catch (SQLException e){
+            JOptionPane.showMessageDialog(this, "Student NOT Registered!");
         }
-    }//GEN-LAST:event_button1MouseClicked
+    }//GEN-LAST:event_pnextMouseClicked
 
     /**
      * @param args the command line arguments
@@ -327,6 +328,8 @@ public class registration extends javax.swing.JFrame {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new registration().setVisible(true);
+                new origin().setVisible(true);
+                new courses().setVisible(true);
             }
         });
     }
@@ -336,7 +339,6 @@ public class registration extends javax.swing.JFrame {
     private javax.swing.JTextField Firstname;
     private javax.swing.JComboBox<String> Sex;
     private javax.swing.JTextField Surname;
-    private java.awt.Button button1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
@@ -350,5 +352,6 @@ public class registration extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JTextField nationality;
+    private java.awt.Button pnext;
     // End of variables declaration//GEN-END:variables
 }

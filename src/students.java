@@ -202,9 +202,9 @@ public class students extends javax.swing.JFrame {
     
     public void selectStudents() {
         try {
-            Con = DriverManager.getConnection("jdbc://localhost:1527/school_db, root, root");
+            Con = DriverManager.getConnection("jdbc://localhost:1527/school_db, APP, APP");
             St = Con.createStatement();
-            Rs = St.executeQuery("SELECT * FROM root.Student");
+            Rs = St.executeQuery("SELECT * FROM APP.STUDENT");
             Registered.setModel(DbUtils.resultSetToTableModel(Rs));
         } catch (SQLException e) {
             
