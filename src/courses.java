@@ -1,3 +1,11 @@
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
@@ -52,9 +60,9 @@ public class courses extends javax.swing.JFrame {
         jLabel5 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
-        button1 = new java.awt.Button();
-        jComboBox1 = new javax.swing.JComboBox<>();
-        jComboBox2 = new javax.swing.JComboBox<>();
+        submitButton = new java.awt.Button();
+        Programme = new javax.swing.JComboBox<>();
+        Education = new javax.swing.JComboBox<>();
         jMenuBar1 = new javax.swing.JMenuBar();
 
         jButton1.setText("jButton1");
@@ -85,9 +93,11 @@ public class courses extends javax.swing.JFrame {
         jPanel3.setBackground(new java.awt.Color(0, 0, 0));
 
         jLabel1.setFont(new java.awt.Font("Dialog", 0, 36)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("School");
 
         jLabel2.setFont(new java.awt.Font("Dialog", 0, 36)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("Management");
 
         jLabel3.setFont(new java.awt.Font("Dialog", 0, 36)); // NOI18N
@@ -145,34 +155,39 @@ public class courses extends javax.swing.JFrame {
         jLabel9.setForeground(new java.awt.Color(0, 0, 0));
         jLabel9.setText("Education:");
 
-        button1.setActionCommand("SUBMIT");
-        button1.setBackground(new java.awt.Color(0, 0, 0));
-        button1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        button1.setFont(new java.awt.Font("Lucida Grande", 1, 18)); // NOI18N
-        button1.setLabel("SUBMIT");
-        button1.addActionListener(new java.awt.event.ActionListener() {
+        submitButton.setActionCommand("SUBMIT");
+        submitButton.setBackground(new java.awt.Color(0, 0, 0));
+        submitButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        submitButton.setFont(new java.awt.Font("Lucida Grande", 1, 18)); // NOI18N
+        submitButton.setLabel("SUBMIT");
+        submitButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                submitButtonMouseClicked(evt);
+            }
+        });
+        submitButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                button1ActionPerformed(evt);
+                submitButtonActionPerformed(evt);
             }
         });
 
-        jComboBox1.setBackground(new java.awt.Color(255, 255, 255));
-        jComboBox1.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
-        jComboBox1.setForeground(new java.awt.Color(0, 0, 0));
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Civil Engineering", "Rural Engineering", "Town Planning", "Surveying" }));
-        jComboBox1.addActionListener(new java.awt.event.ActionListener() {
+        Programme.setBackground(new java.awt.Color(255, 255, 255));
+        Programme.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        Programme.setForeground(new java.awt.Color(0, 0, 0));
+        Programme.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Civil Engineering", "Rural Engineering", "Town Planning", "Surveying" }));
+        Programme.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jComboBox1ActionPerformed(evt);
+                ProgrammeActionPerformed(evt);
             }
         });
 
-        jComboBox2.setBackground(new java.awt.Color(255, 255, 255));
-        jComboBox2.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
-        jComboBox2.setForeground(new java.awt.Color(0, 0, 0));
-        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Only OL", "AL with CHEMISTRY", "AL with PHYSICS ", "AL with MATHS", "AL with MATHS and PHYSICS", "AL with MATHS and CHEMISTRY" }));
-        jComboBox2.addActionListener(new java.awt.event.ActionListener() {
+        Education.setBackground(new java.awt.Color(255, 255, 255));
+        Education.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        Education.setForeground(new java.awt.Color(0, 0, 0));
+        Education.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Only OL", "AL with CHEMISTRY", "AL with PHYSICS ", "AL with MATHS", "AL with MATHS and PHYSICS", "AL with MATHS and CHEMISTRY" }));
+        Education.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jComboBox2ActionPerformed(evt);
+                EducationActionPerformed(evt);
             }
         });
 
@@ -186,7 +201,7 @@ public class courses extends javax.swing.JFrame {
                 .addGap(102, 102, 102))
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jComboBox1, 0, 220, Short.MAX_VALUE)
+                    .addComponent(Programme, 0, 220, Short.MAX_VALUE)
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -197,13 +212,13 @@ public class courses extends javax.swing.JFrame {
                                     .addComponent(jLabel9)))
                             .addGroup(jPanel2Layout.createSequentialGroup()
                                 .addGap(87, 87, 87)
-                                .addComponent(jComboBox2, 0, 0, Short.MAX_VALUE)))))
+                                .addComponent(Education, 0, 0, Short.MAX_VALUE)))))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 61, Short.MAX_VALUE)
-                .addComponent(button1, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(submitButton, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(47, 47, 47))
         );
 
-        jPanel2Layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {jComboBox1, jComboBox2});
+        jPanel2Layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {Education, Programme});
 
         jPanel2Layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {jLabel5, jLabel9});
 
@@ -216,21 +231,21 @@ public class courses extends javax.swing.JFrame {
                 .addGap(18, 31, Short.MAX_VALUE)
                 .addComponent(jLabel5)
                 .addGap(18, 18, 18)
-                .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(Programme, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(20, 20, 20)
                 .addComponent(jLabel9)
                 .addGap(18, 18, 18)
-                .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(Education, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(168, 168, 168)
-                .addComponent(button1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(submitButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(36, 36, 36))
         );
 
-        jPanel2Layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {jComboBox1, jComboBox2});
+        jPanel2Layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {Education, Programme});
 
         jPanel2Layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {jLabel5, jLabel9});
 
-        button1.getAccessibleContext().setAccessibleName("SUBMIT");
+        submitButton.getAccessibleContext().setAccessibleName("SUBMIT");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -259,11 +274,11 @@ public class courses extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
+    private void ProgrammeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ProgrammeActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jComboBox1ActionPerformed
+    }//GEN-LAST:event_ProgrammeActionPerformed
 
-    private void button1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button1ActionPerformed
+    private void submitButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_submitButtonActionPerformed
         // TODO add your handling code here:
         try {
             origin menu = new origin();
@@ -273,11 +288,26 @@ public class courses extends javax.swing.JFrame {
         catch(Exception e) {
 
         }
-    }//GEN-LAST:event_button1ActionPerformed
+    }//GEN-LAST:event_submitButtonActionPerformed
 
-    private void jComboBox2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox2ActionPerformed
+    private void EducationActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EducationActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jComboBox2ActionPerformed
+    }//GEN-LAST:event_EducationActionPerformed
+    Connection Con = null;
+    Statement St = null;
+    ResultSet Rs = null;
+    
+    
+    private void submitButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_submitButtonMouseClicked
+        // TODO add your handling code here:
+        try{
+            Con = DriverManager.getConnection("jdbc://localhost:1527/school_db, root, root");
+            PreparedStatement add = Con.prepareStatement("INSERT INTO STUDENT values(?,?,?,?,?,?,?,?,?,?,?,?,?)");
+            add.setString(12, Programme.getSelectedItem().toString());
+            add.setString(13, Education.getSelectedItem().toString());
+        } catch(SQLException e) {
+       }
+    }//GEN-LAST:event_submitButtonMouseClicked
 
     /**
      * @param args the command line arguments
@@ -315,7 +345,8 @@ public class courses extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private java.awt.Button button1;
+    private javax.swing.JComboBox<String> Education;
+    private javax.swing.JComboBox<String> Programme;
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.ButtonGroup buttonGroup2;
     private javax.swing.ButtonGroup buttonGroup3;
@@ -326,8 +357,6 @@ public class courses extends javax.swing.JFrame {
     private javax.swing.ButtonGroup buttonGroup8;
     private javax.swing.ButtonGroup buttonGroup9;
     private javax.swing.JButton jButton1;
-    private javax.swing.JComboBox<String> jComboBox1;
-    private javax.swing.JComboBox<String> jComboBox2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -346,5 +375,6 @@ public class courses extends javax.swing.JFrame {
     private javax.swing.JRadioButtonMenuItem jRadioButtonMenuItem2;
     private javax.swing.JRadioButtonMenuItem jRadioButtonMenuItem3;
     private javax.swing.JRadioButtonMenuItem jRadioButtonMenuItem4;
+    private java.awt.Button submitButton;
     // End of variables declaration//GEN-END:variables
 }
