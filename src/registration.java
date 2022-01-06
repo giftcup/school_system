@@ -145,8 +145,8 @@ public class registration extends javax.swing.JFrame {
 
         button1.setBackground(new java.awt.Color(0, 0, 0));
         button1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        button1.setFont(new java.awt.Font("Lucida Grande", 0, 18)); // NOI18N
-        button1.setLabel("Next");
+        button1.setFont(new java.awt.Font("Lucida Grande", 1, 18)); // NOI18N
+        button1.setLabel("NEXT");
         button1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 button1ActionPerformed(evt);
@@ -186,7 +186,7 @@ public class registration extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(172, 172, 172)
                         .addComponent(jLabel7)
-                        .addContainerGap(224, Short.MAX_VALUE))
+                        .addContainerGap(222, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(button1, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -220,7 +220,7 @@ public class registration extends javax.swing.JFrame {
                     .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(39, 39, 39)
                 .addComponent(button1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(65, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
