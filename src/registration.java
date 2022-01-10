@@ -5,17 +5,11 @@
 
 /**
  *
- * @author pro-3is
+ * @author Salome Tambe
  */
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
-import javax.swing.JOptionPane;
+import javax.swing.*;
 
-public class registration extends javax.swing.JFrame {
+public class registration extends JFrame {
 
     /**
      * Creates new form registration
@@ -269,32 +263,10 @@ public class registration extends javax.swing.JFrame {
            }
     }//GEN-LAST:event_pnextActionPerformed
 
-    Connection Con = null;
-    Statement St = null;
-    ResultSet Rs = null;
-    
-    java.util.Date BirthDate;
-    java.sql.Date DOB;
+  
     
     private void pnextMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnextMouseClicked
-        // TODO add your handling code here:
-//        BirthDate = Date_of_Birth.getDate();
-//        DOB = new java.sql.Date(Date_of_Birth.getTime());
-
-        try {
-            Con = DriverManager.getConnection("jdbc://localhost:1527/school_db, APP, APP");
-            PreparedStatement add = Con.prepareStatement("Insert into STUDENT values(?,?,?,?,?,?,?,?,?,?,?,?,?)");
-            add.setString(2, Firstname.getText());
-            add.setString(3, Surname.getText());
-            add.setString(5, Sex.getSelectedItem().toString());
-//            add.setDate(4, DOB);
-            add.setString(10, nationality.getText());
-            JOptionPane.showMessageDialog(this, "Student Registered!");
-            Con.close();
-            
-        } catch (SQLException e){
-            JOptionPane.showMessageDialog(this, "Student NOT Registered!");
-        }
+        
     }//GEN-LAST:event_pnextMouseClicked
 
     /**
@@ -328,8 +300,6 @@ public class registration extends javax.swing.JFrame {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new registration().setVisible(true);
-                new origin().setVisible(true);
-                new courses().setVisible(true);
             }
         });
     }

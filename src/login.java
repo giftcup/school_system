@@ -5,7 +5,7 @@
 
 /**
  *
- * @author pro-3is
+ * @author Salome Tambe
  */
 public class login extends javax.swing.JFrame {
 
@@ -130,7 +130,7 @@ public class login extends javax.swing.JFrame {
 
         jLabel6.setFont(new java.awt.Font("Dialog", 0, 36)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel6.setText("Login");
+        jLabel6.setText("Admin Login");
 
         jLabel7.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(0, 0, 0));
@@ -153,7 +153,7 @@ public class login extends javax.swing.JFrame {
                     .addComponent(jLabel6)
                     .addComponent(jTextField1)
                     .addComponent(jPasswordField1)
-                    .addComponent(jTextField2, javax.swing.GroupLayout.DEFAULT_SIZE, 193, Short.MAX_VALUE))
+                    .addComponent(jTextField2))
                 .addGap(139, 139, 139))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
@@ -225,7 +225,7 @@ public class login extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
         try {
-               registration menu = new registration();
+               students menu = new students();
                menu.setVisible(true);
                setVisible(false);
            }
