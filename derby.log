@@ -1,45 +1,11 @@
-Thu Jan 06 10:40:54 WAT 2022 : Apache Derby Network Server - 10.14.2.0 - (1828579) started and ready to accept connections on port 1527
+Mon Jan 10 16:29:38 WAT 2022 : Apache Derby Network Server - 10.14.2.0 - (1828579) started and ready to accept connections on port 1527
 ----------------------------------------------------------------
-Thu Jan 06 10:40:59 WAT 2022:
-Booting Derby version The Apache Software Foundation - Apache Derby - 10.14.2.0 - (1828579): instance a816c00e-017e-2ec3-1784-0000396b69f3 
-on database directory /Users/pro-3is/NetBeansProjects/school_system/sample with class loader sun.misc.Launcher$AppClassLoader@266474c2 
+Mon Jan 10 16:29:43 WAT 2022:
+Booting Derby version The Apache Software Foundation - Apache Derby - 10.14.2.0 - (1828579): instance a816c00e-017e-449b-dfff-0000396b69f3 
+on database directory /Users/pro-3is/NetBeansProjects/school_system/school_db with class loader jdk.internal.loader.ClassLoaders$AppClassLoader@42110406 
 Loaded from file:/Users/pro-3is/Downloads/db-derby-10.14.2.0-bin/lib/derby.jar
-java.vendor=AdoptOpenJDK
-java.runtime.version=1.8.0_292-b10
-user.dir=/Users/pro-3is/Downloads/db-derby-10.14.2.0-bin
-os.name=Mac OS X
-os.arch=x86_64
-os.version=10.15.7
-derby.system.home=/Users/pro-3is/NetBeansProjects/school_system
-Database Class Loader started - derby.database.classpath=''
-----------------------------------------------------------------
-Thu Jan 06 10:41:37 WAT 2022:
-Shutting down instance a816c00e-017e-2ec3-1784-0000396b69f3 on database directory /Users/pro-3is/NetBeansProjects/school_system/sample with class loader sun.misc.Launcher$AppClassLoader@266474c2 
-Thu Jan 06 10:41:37 WAT 2022 Thread[DRDAConnThread_3,5,main] (DATABASE = sample), (DRDAID = {2}), Database 'sample' shutdown.
-----------------------------------------------------------------
-Thu Jan 06 10:42:23 WAT 2022:
-Booting Derby version The Apache Software Foundation - Apache Derby - 10.14.2.0 - (1828579): instance e0b94027-017e-2ec3-1784-0000396b69f3 
-on database directory /Users/pro-3is/NetBeansProjects/school_system/school_db with class loader sun.misc.Launcher$AppClassLoader@266474c2 
-Loaded from file:/Users/pro-3is/Downloads/db-derby-10.14.2.0-bin/lib/derby.jar
-java.vendor=AdoptOpenJDK
-java.runtime.version=1.8.0_292-b10
-user.dir=/Users/pro-3is/Downloads/db-derby-10.14.2.0-bin
-os.name=Mac OS X
-os.arch=x86_64
-os.version=10.15.7
-derby.system.home=/Users/pro-3is/NetBeansProjects/school_system
-Database Class Loader started - derby.database.classpath=''
-----------------------------------------------------------------
-Thu Jan 06 10:42:29 WAT 2022:
-Shutting down instance e0b94027-017e-2ec3-1784-0000396b69f3 on database directory /Users/pro-3is/NetBeansProjects/school_system/school_db with class loader sun.misc.Launcher$AppClassLoader@266474c2 
-Thu Jan 06 10:42:29 WAT 2022 Thread[DRDAConnThread_3,5,main] (DATABASE = school_db), (DRDAID = {4}), Database 'school_db' shutdown.
-----------------------------------------------------------------
-Thu Jan 06 10:42:59 WAT 2022:
-Booting Derby version The Apache Software Foundation - Apache Derby - 10.14.2.0 - (1828579): instance 4b6f00c8-017e-2ec3-1784-0000396b69f3 
-on database directory /Users/pro-3is/NetBeansProjects/school_system/school_db with class loader sun.misc.Launcher$AppClassLoader@266474c2 
-Loaded from file:/Users/pro-3is/Downloads/db-derby-10.14.2.0-bin/lib/derby.jar
-java.vendor=AdoptOpenJDK
-java.runtime.version=1.8.0_292-b10
+java.vendor=Oracle Corporation
+java.runtime.version=17.0.1+12-LTS-39
 user.dir=/Users/pro-3is/Downloads/db-derby-10.14.2.0-bin
 os.name=Mac OS X
 os.arch=x86_64

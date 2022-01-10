@@ -14,8 +14,9 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import javax.swing.JOptionPane;
+import javax.swing.*;
 
-public class registration extends javax.swing.JFrame {
+public class registration extends JFrame {
 
     /**
      * Creates new form registration
@@ -283,7 +284,7 @@ public class registration extends javax.swing.JFrame {
 
         try {
             Con = DriverManager.getConnection("jdbc://localhost:1527/school_db, APP, APP");
-            PreparedStatement add = Con.prepareStatement("Insert into STUDENT values(?,?,?,?,?,?,?,?,?,?,?,?,?)");
+            PreparedStatement add = Con.prepareStatement("INSERT INTO STUDENT VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?)");
             add.setString(2, Firstname.getText());
             add.setString(3, Surname.getText());
             add.setString(5, Sex.getSelectedItem().toString());
@@ -293,7 +294,7 @@ public class registration extends javax.swing.JFrame {
             Con.close();
             
         } catch (SQLException e){
-            JOptionPane.showMessageDialog(this, "Student NOT Registered!");
+            
         }
     }//GEN-LAST:event_pnextMouseClicked
 
@@ -328,8 +329,6 @@ public class registration extends javax.swing.JFrame {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new registration().setVisible(true);
-                new origin().setVisible(true);
-                new courses().setVisible(true);
             }
         });
     }
