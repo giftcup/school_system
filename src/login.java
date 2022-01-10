@@ -5,7 +5,7 @@
 
 /**
  *
- * @author pro-3is
+ * @author Salome Tambe
  */
 public class login extends javax.swing.JFrame {
 
